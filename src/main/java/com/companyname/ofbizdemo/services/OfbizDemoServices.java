@@ -17,20 +17,14 @@ public class OfbizDemoServices {
         Delegator delegator = dctx.getDelegator();
         try {
             GenericValue ofbizDemo = delegator.makeValue("OfbizDemo");
-            // Auto generating next sequence of ofbizDemoId primary key
-            ofbizDemo.setNextSeqId();
-            // Setting up all non primary key field values from context map
+             ofbizDemo.setNextSeqId();
             ofbizDemo.setNonPKFields(context);
-            // Creating record in database for OfbizDemo entity for prepared value
             ofbizDemo = delegator.create(ofbizDemo);
             result.put("ofbizDemoId", ofbizDemo.getString("ofbizDemoId"));
-            Debug.log("====This is my first Java Service implementation in Apache OFBiz. " +
-                    "OfbizDemo record created successfully with ofbizDemoId:"
-                    + ofbizDemo.getString("ofbizDemoId"));
-
+         
         } catch (GenericEntityException e) {
             Debug.logError(e, MODULE);
-            return ServiceUtil.returnError("Error in creating record in OfbizDemo entity ........" + MODULE);
+            return ServiceUtil.returnError("Error in creating record in OfbizDemo entity " + MODULE);
         }
         return result;
     }
