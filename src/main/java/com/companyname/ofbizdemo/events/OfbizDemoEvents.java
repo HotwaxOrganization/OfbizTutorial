@@ -32,7 +32,7 @@ public class OfbizDemoEvents {
         String comments = request.getParameter("comments");
 
         try {
-            Debug.logInfo("=======Creating OfbizDemo record in event using service createOfbizDemoByGroovyService=========", MODULE);
+        
             dispatcher.runSync("createOfbizDemoByGroovyService", UtilMisc.toMap("ofbizDemoTypeId", ofbizDemoTypeId,
                     "firstName", firstName, "lastName", lastName, "comments", comments, "userLogin", userLogin));
         } catch (GenericServiceException e) {
